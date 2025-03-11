@@ -1,13 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>logTrabajadores</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("FONDO1.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background-color: #2980b9;
+    }
+  </style>
 </head>
 <body>
-   
-    <h1>Iniciar Sesión</h1>
+
+  <div class="login-container">
+    <h2>Iniciar Sesión a Portal</h2>
+    <form>
+      <input type="text" placeholder="Número Usuario" required>
+      <input type="password" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <div id="error" class="error-message">Número de usuario o contraseña incorrectos.</div>
+  </div>
+<script>
+    const form = document.getElementById('loginForm');
+    const error = document.getElementById('error');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita que el formulario se envíe
+
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
+
+      // Aquí puedes reemplazar esto con una verificación real con base de datos o API
+      if (usuario === 'admin' && contrasena === '1234') {
+        error.style.display = 'none';
+        alert('¡Inicio de sesión exitoso!');
+        // window.location.href = "dashboard.html"; // Redirigir si deseas
+      } else {
+        error.style.display = 'block';
+      }
+    });
+  </script>
 
 </body>
 </html>
