@@ -3,42 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <title>Login</title>
   <link rel="stylesheet" href="LoginTrabajadores.css">
-  
 </head>
 <body>
 
   <div class="login-container">
     <h2>Iniciar Sesión a Portal</h2>
-    <form>
-      <input type="text" placeholder="Número Usuario" required>
-      <input type="password" placeholder="Contraseña" required>
+    <form id="loginForm" method="POST" action="/Backend/LoginTrabajadores.php">
+      <input type="text" id="usuario" name="username" placeholder="Número Usuario" required>
+      <input type="password" id="contrasena" name="password" placeholder="Contraseña" required>
       <button type="submit">Entrar</button>
     </form>
-    <div id="error" class="error-message">Número de usuario o contraseña incorrectos.</div>
+
+    <?php if(isset($_GET['error'])): ?>
+      <div id="error" class="error-message">
+        <?= htmlspecialchars($_GET['error']) ?>
+      </div>
+    <?php endif; ?>
   </div>
-<script>
-    const form = document.getElementById('loginForm');
-    const error = document.getElementById('error');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Evita que el formulario se envíe
-
-      const usuario = document.getElementById('usuario').value;
-      const contrasena = document.getElementById('contrasena').value;
-
-      // Aquí puedes reemplazar esto con una verificación real con base de datos o API
-      if (usuario === 'admin' && contrasena === '1234') {
-        error.style.display = 'none';
-        alert('¡Inicio de sesión exitoso!');
-        // window.location.href = "dashboard.html"; // Redirigir si deseas
-      } else {
-        error.style.display = 'block';
-      }
-    });
-  </script>
 
 </body>
 </html>
