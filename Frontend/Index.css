@@ -100,4 +100,20 @@ body {
   .letra-grande {
     font-size: 40px;
   }
+  /* Estilos del carrusel */
+  .carousel-container {
+    position: relative;
+    width: var(--carousel-width);
+    max-width: var(--carousel-max-width);
+    height: var(--carousel-height);
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+  }
   
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+  }
