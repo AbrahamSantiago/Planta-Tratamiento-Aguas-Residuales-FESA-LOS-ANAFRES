@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: #f2f2f2;
+    padding: 2rem;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .form-container label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  .form-container input,
+  .form-container select,
+  .form-container textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .form-container button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .form-container button:hover {
+    background-color: #167bd7;
+  }
+
+  /* Estilos de tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  thead {
+    background-color: #1e90ff;
+    color: #fff;
+  }
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  th {
+    font-weight: bold;
+  }
+
+  /* Colores para clasificaciones */
+  .critico {
+    color: #b22222;  /* rojo fuerte */
+    font-weight: bold;
+  }
+  .pendiente {
+    color: #ff8c00;  /* anaranjado */
+    font-weight: bold;
+  }
+  .estable {
+    color: #228b22;  /* verde */
+    font-weight: bold;
+  }
+  .irregular {
+    color: #8b4513;  /* café */
+    font-weight: bold;
+  }

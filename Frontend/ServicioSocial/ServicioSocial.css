@@ -1,0 +1,125 @@
+.TituloServicioSocial{
+    color: darkblue;
+    text-shadow: 0rcap;
+    font-size: 60px;
+    
+
+}
+/* Estilos generales */
+body {
+    background: linear-gradient(to right, #08103a, #061463);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+  }
+  .header {
+    background: linear-gradient(to right, #08103a, #061463);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar {
+    background-color: #b4850f;
+  }
+  .navbar .nav-link {
+    color: #063e9e;
+    font-weight: bold;
+  }
+  .navbar .nav-link:hover {
+    color: #e2b911;
+  }
+  .container .navbar {
+    margin-top: 30px;
+    background-color: rgba(1, 11, 32, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .container {
+    margin-top: 30px;
+    background-color: rgba(125, 128, 134, 0.70);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .footer {
+    background: linear-gradient(to right, #08103a, #061463);
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    position: fixed;
+    font-size: 0.85rem;
+    bottom: 0;
+    width: 100%;
+  }
+  .footer p{
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+  .btn-custom {
+    background-color: #007bb5;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    transition: 0.3s;
+  }
+  .btn-custom:hover {
+    background-color: #005a8d;
+  }
+  .letra-grande {
+    font-size: 40px;
+  }
+  .letra-subtitulo {
+    font-size: 30px;
+  }
+  .caption {
+    margin-top: 10px;
+    text-align: center;
+    color: #08103a;
+    margin: auto;
+  }
+  .caption h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+  
+  .description {
+    margin-top: 10px;
+  }
+  button.prev:hover,
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --carousel-height: auto;
+      --image-height: 200px;
+    }
+  
+    .carousel-container {
+      height: auto;
+    }
+  
+    .slide img {
+      height: var(--image-height);
+    }
+  
+    .caption h3 {
+      font-size: 1rem;
+    }
+  }

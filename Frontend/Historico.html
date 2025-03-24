@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tabla de Datos Históricos - Planta de Tratamiento</title>
+  <link rel="stylesheet" href="Histrorico.css">
+  
+  <!-- Estilos CSS integrados -->
+  
+</head>
+<body>
+
+  <h1>Historial de Reportes - Planta de Agua para Riego</h1>
+
+  <!-- Formulario para añadir nuevos reportes -->
+  <div class="form-container">
+    <h2>Agregar Nuevo Reporte</h2>
+    <form id="reportForm">
+      <label for="fecha">Fecha de Reporte:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <label for="descripcion">Descripción del Reporte:</label>
+      <textarea id="descripcion" name="descripcion" rows="3" required></textarea>
+
+      <label for="clasificacion">Clasificación de Estado:</label>
+      <select id="clasificacion" name="clasificacion" required>
+        <option value="">-- Selecciona un estado --</option>
+        <option value="critico">Crítico</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="estable">Estable</option>
+        <option value="irregular">Irregular</option>
+      </select>
+
+      <label for="reportero">Nombre de quien realiza el reporte:</label>
+      <input type="text" id="reportero" name="reportero" placeholder="Ej. Juan Pérez" required>
+
+      <button type="submit">Agregar Reporte</button>
+    </form>
+  </div>
+
+  <!-- Tabla de reportes -->
+  <table id="tablaReportes">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Descripción</th>
+        <th>Clasificación</th>
+        <th>Reportado por</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Filas iniciales de ejemplo -->
+      <tr>
+        <td>2025-03-01</td>
+        <td>Revisión de tuberías en área de sedimentación</td>
+        <td class="pendiente">Pendiente</td>
+        <td>María López</td>
+      </tr>
+      <tr>
+        <td>2025-03-02</td>
+        <td>Niveles de pH ligeramente elevados</td>
+        <td class="critico">Crítico</td>
+        <td>Carlos Méndez</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- JavaScript para manejar el formulario y añadir filas a la tabla -->
+  <script>
+    const form = document.getElementById('reportForm');
+    const tablaReportes = document.getElementById('tablaReportes').getElementsByTagName('tbody')[0];
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita recarga de página
+
+      // Obtener valores
+      const fecha = document.getElementById('fecha').value;
+      const descripcion = document.getElementById('descripcion').value;
+      const clasificacion = document.getElementById('clasificacion').value;
+      const reportero = document.getElementById('reportero').value;
+
+      // Crear nueva fila
+      const nuevaFila = tablaReportes.insertRow();
+
+      // Crear celdas
+      const celdaFecha = nuevaFila.insertCell(0);
+      const celdaDescripcion = nuevaFila.insertCell(1);
+      const celdaClasificacion = nuevaFila.insertCell(2);
+      const celdaReportero = nuevaFila.insertCell(3);
+
+      // Asignar valores a las celdas
+      celdaFecha.textContent = fecha;
+      celdaDescripcion.textContent = descripcion;
+      celdaClasificacion.textContent = formatearClasificacion(clasificacion);
+      celdaClasificacion.classList.add(clasificacion); // Para aplicar color al texto
+      celdaReportero.textContent = reportero;
+
+      // Limpiar el formulario
+      form.reset();
+    });
+
+    function formatearClasificacion(clas) {
+      // Opcionalmente, podrías cambiar la palabra que se ve en la tabla
+      switch(clas) {
+        case 'critico': return 'Crítico';
+        case 'pendiente': return 'Pendiente';
+        case 'estable': return 'Estable';
+        case 'irregular': return 'Irregular';
+        default: return clas; // En caso de algo no contemplado
+      }
+    }
+  </script>
+</body>
+</html>
