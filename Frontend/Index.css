@@ -1,3 +1,17 @@
+/* Variables de medidas */
+:root {
+  --carousel-width: 100%; /* Ancho del carrusel */
+  --carousel-max-width: 850px; /* Ancho máximo del carrusel */
+  --carousel-height: 400px; /* Alto del carrusel */
+  --image-height: 300px; /* Alto de las imágenes */
+  --button-size: 40px; /* Tamaño de los botones de navegación */
+  --button-padding: 10px; /* Espaciado interno de los botones */
+  --description-padding: 20px; /* Espaciado interno de la descripción */
+}
+
+
+
+
 /* Estilos generales */
 body {
     background: linear-gradient(to right, #08103a, #061463);
@@ -44,10 +58,16 @@ body {
     background: linear-gradient(to right, #08103a, #061463);
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 5px 0;
     position: fixed;
+    font-size: 0.85rem;
     bottom: 0;
     width: 100%;
+  }
+  .footer p{
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
   }
   .btn-custom {
     background-color: #007bb5;
@@ -62,16 +82,19 @@ body {
   /* Contenedor de video responsive */
   .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* Proporción 16:9 */
-    height: 0;
-    overflow: hidden;
+    padding-bottom: 40%; /* Proporción 16:9 */
+    width: 400;
+    height: 300px;
+    margin: 0 auto;
   }
   .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position:static;
+    display: block;
+  margin: 0 auto;
+    width: 70%;
+    height: 430px;
+   
+    
   }
   /* Contenedor de imágenes con scroll horizontal */
   .imge-container {
@@ -79,15 +102,15 @@ body {
     overflow-x: auto;
     gap: 10px;
     padding: 10px;
-  }
-  .image-container {
     text-align: center;
   }
+ 
   .map-responsive {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%; /* Relación 16:9 */
+    width: 300;
+    height: 200px;
+    padding-top: 30%;
   }
   .map-responsive iframe {
     position: absolute;
@@ -100,20 +123,110 @@ body {
   .letra-grande {
     font-size: 40px;
   }
+  .letra-subtitulo {
+    font-size: 30px;
+  }
   /* Estilos del carrusel */
   .carousel-container {
     position: relative;
-    width: var(--carousel-width);
-    max-width: var(--carousel-max-width);
+    width: 100%; /* Ocupa todo el ancho disponible del contenedor padre */
+    max-width: none; /* Quitamos el límite fijo de ancho */
     height: var(--carousel-height);
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    margin: 20px auto;
+    margin-top: 20px;
   }
   
   .carousel {
     display: flex;
     transition: transform 0.5s ease-in-out;
     height: 100%;
+    width: 100%;
   }
+
+  .slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(147, 154, 170, 0.7);
+    padding: var(--description-padding);
+    box-sizing: border-box;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: var(--image-height);
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .caption {
+    margin-top: 10px;
+    text-align: center;
+    color: #08103a;
+    margin: auto;
+  }
+  .caption h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+  
+  .description {
+    margin-top: 10px;
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: var(--button-padding);
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+  button.prev:hover,
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --carousel-height: auto;
+      --image-height: 200px;
+    }
+  
+    .carousel-container {
+      height: auto;
+    }
+  
+    .slide img {
+      height: var(--image-height);
+    }
+  
+    .caption h3 {
+      font-size: 1rem;
+    }
+  }
+  
