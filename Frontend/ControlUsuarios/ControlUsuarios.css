@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: #f2f2f2;
+    padding: 2rem;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  /* Contenedor principal */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1rem 2rem;
+  }
+  /* Formulario */
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  form div {
+    flex: 1;
+    min-width: 200px;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    margin-top: 1.8rem;
+    align-self: flex-end;
+    height: 40px;
+  }
+  button:hover {
+    background-color: #167bd7;
+  }
+  /* Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  th {
+    background-color: #1e90ff;
+    color: #fff;
+  }
+  .acciones button {
+    background-color: #ff5c5c;
+    margin-right: 0.5rem;
+  }
+  .acciones button:hover {
+    background-color: #e14a4a;
+  }
+  .toggle-estado {
+    background-color: #ffa500;
+  }
+  .toggle-estado:hover {
+    background-color: #e08c00;
+  }
+  .activo {
+    color: #228b22;
+    font-weight: bold;
+  }
+  .inactivo {
+    color: #b22222;
+    font-weight: bold;
+  }
