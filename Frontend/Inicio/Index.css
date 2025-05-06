@@ -8,20 +8,16 @@
   --button-padding: 10px; /* Espaciado interno de los botones */
   --description-padding: 20px; /* Espaciado interno de la descripción */
 }
-
-
-
-
 /* Estilos generales */
 body {
-    background: linear-gradient(to right, #08103a, #061463);
+    background-color:#ffffff;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     font-family: Arial, sans-serif;
   }
   .header {
-    background: linear-gradient(to right, #08103a, #061463);
+    background-color: #00263E;
     color: white;
     padding: 20px;
     text-align: center;
@@ -31,14 +27,21 @@ body {
     justify-content: center;
   }
   .navbar {
-    background-color: #b4850f;
+    background-color: #007398;
   }
   .navbar .nav-link {
-    color: #063e9e;
+    color: #ffffff;
     font-weight: bold;
   }
   .navbar .nav-link:hover {
-    color: #e2b911;
+    color: #000000;
+  }
+  .container_r .navbar {
+    margin-top: 30px;
+    background-color: rgba(1, 11, 32, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   .container .navbar {
     margin-top: 30px;
@@ -47,15 +50,23 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+  .container_r{
+    margin: 10px;
+    background-color:#00A3AD;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+  }
   .container {
     margin-top: 30px;
-    background-color: rgba(125, 128, 134, 0.70);
+    background-color: #7d8086;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   .footer {
-    background: linear-gradient(to right, #08103a, #061463);
+    background-color:#00263E; 
     color: white;
     text-align: center;
     padding: 5px 0;
