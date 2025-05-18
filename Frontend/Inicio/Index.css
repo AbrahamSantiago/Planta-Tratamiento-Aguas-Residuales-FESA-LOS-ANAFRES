@@ -36,13 +36,6 @@ body {
   .navbar .nav-link:hover {
     color: #000000;
   }
-  .container_r .navbar {
-    margin-top: 30px;
-    background-color: rgba(1, 11, 32, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
   .container .navbar {
     margin-top: 30px;
     background-color: rgba(1, 11, 32, 0.7);
