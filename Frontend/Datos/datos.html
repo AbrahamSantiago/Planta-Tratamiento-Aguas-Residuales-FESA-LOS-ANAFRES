@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Datos</title>
+  <link rel="stylesheet" href="/Frontend/Datos/datos.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Carga tu archivo Excel</h2>
+    <input type="file" name="archivo_excel" id="fileInput" accept=".xlsx,.xls" onchange="mostrarBoton()">
+    <br>
+    <button type="submit" id="btnSubir" style="display: none;">Subir Archivo</button>
+    </form>
+  <h2>Registro Manual de Datos</h2>
+  <div class="form-row">
+    <div><label>Fecha: <input type="date" id="fecha"></label></div>
+    <div><label>Niv 0: <input type="number" id="niv0"></label></div>
+    <div><label>Niv F: <input type="number" id="nivf"></label></div>
+    <div><label>Dif (N0-NF): <input type="number" id="difniv" disabled></label></div>
+    <div><label>Vol. G.: <input type="number" id="volg"></label></div>
+    <div><label>t 0: <input type="time" id="t0"></label></div>
+    <div><label>t F: <input type="time" id="tf"></label></div>
+    <div><label>Dif (t0-tF) h: <input type="number" id="difh" disabled></label></div>
+    <div><label>Dif (t0-tF) min: <input type="number" id="difmin" disabled></label></div>
+    <div><label>Vol. Agregado (m3): <input type="number" id="volagr"></label></div>
+    <div><label>V total m3: <input type="number" id="vtotal"></label></div>
+  </div>
+  <button onclick="agregarRegistro()">Agregar Registro</button>
+
+  <h3>Registros</h3>
+  <table id="tablaRegistros">
+    <thead>
+      <tr>
+        <th>Fecha</th><th>Niv 0</th><th>Niv F</th><th>Dif (N0-NF)</th><th>Vol. G.</th><th>t 0</th><th>t F</th><th>Dif h</th><th>Dif min</th><th>Vol. Agregado</th><th>V total m3</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <canvas id="grafica" width="800" height="400"></canvas>
+  <script src="/Frontend/Datos/datos.js"></script>
+</body>
+</html>
