@@ -10,11 +10,12 @@
 }
 /* Estilos generales */
 body {
+    
     background-color:#ffffff;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Hind', sans-serif;
   }
   .encabezado {
     display: flex;
@@ -27,8 +28,8 @@ body {
   }
   
   .decoracion-izquierda {
-    width: 1200px;
-    background: linear-gradient(to right, #08103a, #907cc2,#b9b8db,#ffffff);
+    width: 1300px;
+    background: linear-gradient(to right, #08103a, #6d54ad,#8583c4,#ffffff);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     height: 100%;
     position: absolute;
@@ -44,12 +45,16 @@ body {
     width: 100%;
     z-index: 1;
   }
-  
-  h1 {
+  h1.titulo-centrado {
+  font-family: 'Hind', sans-serif;
+  margin-left: 180px;
+}
+
+  /*h1 {
     font-size: 28px;
     font-weight: bold;
     margin: 0;
-  }
+  }*/
   
   .marca img {
     height: 50px;
@@ -77,16 +82,16 @@ body {
     justify-content: center;
   }*/
   .navbar {
-    background-color: #007398;
+    background-color: #3247e3;
   }
-  .navbar .nav-link {
+  .nav-link {
     color: #ffffff;
     font-weight: bold;
   }
-  .navbar .nav-link:hover {
+  .nav-link:hover {
     color: #000000;
   }
-  .container .navbar {
+  .container {
     margin-top: 30px;
     background-color: rgba(1, 11, 32, 0.7);
     padding: 20px;

@@ -15,7 +15,7 @@
   <div class="decoracion-izquierda"></div>
   <div class="contenido">
     <img src="/IMG/unam.png" alt="Logo UNAM" class="logo-unam">
-    <h1>PTAR: Planta de Tratamiento de agua residuales</h1>
+    <h1 class="titulo-centrado" >Planta de Tratamiento de Aguas Residuales PTAR</h1>
     <div class="marca">
       <img src="/IMG/Logo_PTAR.png" alt="Logo PTAR">
     </div>
@@ -24,7 +24,7 @@
 
   
   
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar-expand-lg">
     <div class="container header">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
@@ -45,6 +45,13 @@
       </ul>
     </div>
   </nav>
+
+  <script>
+      window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("container", window.scrollY > 0);
+      });
+    </script>
 
   <div class="container" id="informacion">
     <div class="row">
