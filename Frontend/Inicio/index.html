@@ -2,225 +2,81 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- ya lo tenías -->
   <title>Planta de Tratamiento de Agua - FES Acatlán</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="Index.css">
-  
 </head>
 <body>
 
-
-  <header class="encabezado">
-  <div class="decoracion-izquierda"></div>
-  <div class="contenido">
-    <img src="/IMG/unam.png" alt="Logo UNAM" class="logo-unam">
-
-
-
-    <h1 class="titulo-centrado">PTAR: Planta de Tratamiento de aguas residuales</h1>
->>>>>>> 8f82ded5d6749df81a10ac6b43534d9c0c65351a
-    <div class="marca">
-      <img src="/IMG/Logo_PTAR.png" alt="Logo PTAR">
-    </div>
+  <header class="position-relative">
+  <div class="bg-gradient-ptar w-100 position-absolute top-0 start-0"></div>
+  <div class="container d-flex align-items-center justify-content-between py-2 header-content">
+    <img src="/IMG/unam.png" alt="UNAM" class="logo-unam">
+    <h1 class="m-0 text-white fs-5 text-center flex-fill">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+    <img src="/IMG/Logo_PTAR.png" alt="PTAR" class="logo-ptar">
   </div>
 </header>
 
-  
-  
-  <nav class="navbar-expand-lg">
-    <div class="container header">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/Frontend/Inicio/index.html">Información</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Frontend/ServicioSocial/ServicioSocial.html">Servicio Social</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contacto">Contacto</a>
-        </li>
-        <li>
-          <a class="nav-link" href="/Frontend/Practicas Profesionales/PracticasProfesionales.html">Prácticas profesionales</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Frontend/LoginTrabajadores.html">Portal</a>
-        </li>
-      </ul>
+ 
+<main class="fondo-vista">
+   <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#ptarNavbar"
+              aria-controls="ptarNavbar" aria-expanded="false"
+              aria-label="Mostrar menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="ptarNavbar">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/Frontend/Inicio/index.html">Información</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/Frontend/ServicioSocial/ServicioSocial.html">Servicio Social</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="#contacto">Contacto</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/Frontend/Practicas Profesionales/PracticasProfesionales.html">Prácticas profesionales</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/Frontend/LoginTrabajadores.html">Portal</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <script>
-      window.addEventListener("scroll", function () {
-        var header = document.querySelector("header");
-        header.classList.toggle("container", window.scrollY > 0);
-      });
-    </script>
 
-  <div class="container" id="informacion">
-    <div class="row">
-      <div class="col-12 col-md-8">
-        <p class="letra-grande">¿Qué es la Planta de Tratamiento de Aguas Residuales?</p>
-        <p ">La Planta de Tratamiento de Aguas Residuales (PTAR) de la FES Acatlán es un sistema diseñado para procesar y reutilizar el agua residual del campus, promoviendo la sustentabilidad y el cuidado del medio ambiente.</p>
-
-        <p class="letra-subtitulo">Objetivo</p> 
-        <p ">Construir y poner en marcha la PTAR para el riego de las áreas verdes de la FES Acatlan, con el fin de minimizar el impacto ecológico, así como coadyudar a la perseveración del vital líquido suministrado por el pozo </p>
-        <p class="letra-subtitulo">Características Principales</p>
-        <ul>
-          <li><strong>Tecnología:</strong> Usa reactores anaerobios y aerobios para limpiar el agua.</li>
-          <li><strong>Capacidad:</strong> Procesa hasta 7.5 litros por segundo.</li>
-          <li><strong>Sustentabilidad:</strong> Genera composta con los lodos tratados.</li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-4 image-container">
-        <img src="/IMG/PTAR_MOD.jpeg" class="img-fluid w" alt="Planta de Tratamiento de Agua">
-        <img src="/IMG/PTAR_FOTO1.jpg" class="img-fluid heigh padding 0" alt="Otra vista">
-      </div>
-    </div>
-
-    
-  </div>
-
-  <div class="container my-3">
-    <div class="row">
-      <div class="col-12 col-md-8 mx-auto ">
-        <p class="letra-grande text-center">Contenido Multimedia</p>
-
-
-         <!-- Carrusel de imágenes -->
-          <div class="carousel-container mt-4">
-            <div class="carousel">
-              <div class="slide active">
-                <img src="/IMG/JefePlanta.jpg"
-                    alt="Jefe de la Planta"
-                    class="img-clickeable"
-                    data-titulo="Jefe de Planta"
-                    data-descripcion="El ingeniero Omar Reyes Martinez es el responsable de supervisar las operaciones de la planta." />
-                    <div class="caption">
-                      <p class="letra-subtitulo">Jefe de Planta</p>
-                    
-                    </div>  
-              </div>
-              <div class="slide">
-                <img src="/IMG/FirmaPlanta.jpg"
-                    alt="Firma de la Planta"
-                    class="img-clickeable"
-                    data-titulo="Firma de la Planta"
-                    data-descripcion="La firma oficial de la planta de tratamiento." />
-                    <div class="caption">
-                      <p class="letra-subtitulo">Firma de la planta</p>
-                    
-                    </div>  
-              </div>
-              <div class="slide">
-                <img src="/IMG/FotodeReactor.jpg"
-                    alt="Reactor de la Planta"
-                    class="img-clickeable"
-                    data-titulo="Reactor de la Planta"
-                    data-descripcion="El reactor principal donde se realiza el tratamiento del agua." />
-                    <div class="caption">
-                      <p class="letra-subtitulo">Reactor</p>
-                    
-                    </div>
-              </div>
-              <div class="slide">
-                <img src="/IMG/Recipientes.jpg"
-                    alt="Recipientes"
-                    class="img-clickeable"
-                    data-titulo="Recipientes"
-                    data-descripcion="Se hace muestra de como se ve el agua en la planta de tratamiento." />
-                    <div class="caption">
-                      <p class="letra-subtitulo">Recipientes</p>
-                    
-                    </div>
-              </div>
-
-
-            </div>
-            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
-          </div>
-
-      </div>
-      
-    </div>
-    
-  </div>
-
-
-
-
-     
- <!-- Modal de imagen -->
- <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-light text-dark">
-      <div class="modal-header">
-        <h5 class="modal-title" id="imagenModalLabel">Título</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body text-center">
-        <img id="imagenAmpliada" src="" alt="Imagen ampliada" class="img-fluid mb-3 rounded shadow" />
-        <p id="descripcionImagen" class="text-start"></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-   
-
-
-    
-  <div class="container my-0 ">
-    <div class="video-container">
-      <p class="letra-grande text-center">Video breve</p>
-      <iframe src="https://www.youtube.com/embed/V1rAZFW-8H8?origin=http://localhost" 
-              title="Video de Planta";
-              width="100";
-              height="150"
-              allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-<!--  
-
-  <div class="image-container" id="fotos-personal">
-    <div class="imge-container">
-      <img src="/IMG/JefePlanta.jpg" class="img-fluid" alt="Imagen 1">
-      <img src="/IMG/FirmaPlanta.jpg" class="img-fluid" alt="Imagen 2">
-      <img src="/IMG/FotodeReactor.jpg" class="img-fluid" alt="Imagen 3">
-    </div>
-  </div> -->
-
-
-  <div class="container my-4" id="mapa">
-    <div class="map-responsive">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.3425882219267!2d-99.24908302514177!3d19.483891181806474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2030f995d7901%3A0xc8546d108471abcd!2sFacultad%20de%20Estudios%20Superiores%20Acatl%C3%A1n%20UNAM!5e0!3m2!1ses!2smx!4v1741286569264!5m2!1ses!2smx?origin=http://localhost" 
-        width="600" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </div>
-
-
-
-  <footer class="footer bg-light mt-auto ">
-    <div class="footer">
+  <!-- CONTENIDO DE EJEMPLO -->
+  <main class="mt-4">
+    <div class="container" id="informacion">
       <div class="row">
-        <div class="col-12 col-md-10 mx-auto text-center">
-          <p class="mb-0">&copy; 2025 FES Acatlán - UNAM | Información sobre la PTAR</p>
+        <div class="col-12 col-md-8">
+          <p class="letra-grande">¿Qué es la Planta de Tratamiento de Aguas Residuales?</p>
+          <p>La Planta de Tratamiento de Aguas Residuales (PTAR)...</p>
+          <!-- resto del texto -->
+        </div>
+        <div class="col-12 col-md-4">
+          <img src="/IMG/PTAR_MOD.jpeg" class="img-fluid mb-3" alt="PTAR">
+          <img src="/IMG/PTAR_FOTO1.jpg" class="img-fluid" alt="PTAR vista">
         </div>
       </div>
     </div>
-  </footer>
-  
+  </main>
 
-  <script src="carrusel.js"></script>
+  <!-- FOOTER -->
+  <footer class="footer bg-dark text-white text-center py-2 mt-4">
+    &copy; 2025 FES Acatlán - UNAM | Información sobre la PTAR
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
 </body>
 </html>
+</main>
   
