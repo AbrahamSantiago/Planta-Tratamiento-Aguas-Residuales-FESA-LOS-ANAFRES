@@ -71,7 +71,7 @@ body {
     top: 15px;         /* Ajusta según altura */
      left: 100px;        /* Muy pegado al borde izquierdo */
     height: 60px; 
-    font-weight: ;     /* Tamaño del logo */
+    font: weight 2px; ;     /* Tamaño del logo */
     z-index: 2; 
     color: #ffffff;
   }
