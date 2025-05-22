@@ -84,11 +84,5 @@ img, iframe {
 .fondo-vista > * {
   position: relative;
   z-index: 2;  /* asegura que tu contenido quede encima del overlay */
+   margin-top: calc(var(--header-height) + var(--navbar-height));
 }
-/*.container_info {
-    margin-top: 30px;
-    background-color: rgba(125, 128, 134, 0.70);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
