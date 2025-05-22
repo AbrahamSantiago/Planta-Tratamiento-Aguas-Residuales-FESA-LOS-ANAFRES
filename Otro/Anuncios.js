@@ -1,15 +1,15 @@
-const datoForm = document.getElementById('datoForm');
-const contenedor = document.getElementById('contenedorDatos');
+const anuncioForm = document.getElementById('anuncioForm');
+const contenedor = document.getElementById('contenedorAnuncios');
 
-datoForm.addEventListener('submit', (e) => {
+anuncioForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const titulo = document.getElementById('titulo').value.trim();
-  const contenido = document.getElementById('contenido').value.trim();
-  const imagenInput = document.getElementById('imagenDato');
+  const titulo = document.getElementById('tituloAnuncio').value.trim();
+  const mensaje = document.getElementById('mensajeAnuncio').value.trim();
+  const imagenInput = document.getElementById('imagenAnuncio');
   const archivo = imagenInput.files[0];
 
-  if (!titulo || !contenido) return;
+  if (!titulo || !mensaje) return;
 
   const tarjeta = document.createElement('div');
   tarjeta.className = 'tarjeta-dato';
@@ -18,7 +18,7 @@ datoForm.addEventListener('submit', (e) => {
   h3.textContent = titulo;
 
   const p = document.createElement('p');
-  p.textContent = contenido;
+  p.textContent = mensaje;
 
   const btn = document.createElement('button');
   btn.textContent = "Eliminar";
@@ -35,5 +35,5 @@ datoForm.addEventListener('submit', (e) => {
   }
 
   contenedor.appendChild(tarjeta);
-  datoForm.reset();
+  anuncioForm.reset();
 });

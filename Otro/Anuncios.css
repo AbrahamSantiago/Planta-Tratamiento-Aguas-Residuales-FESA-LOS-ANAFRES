@@ -115,6 +115,34 @@ body {
   background: #0056b3;
 }
 
+/* Formulario */
+.formulario {
+  background: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.formulario form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.formulario input, .formulario select, .formulario button {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.formulario button {
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+.formulario button:hover {
+  background: #0056b3;
+}
+
 /* Formulario y datos */
 textarea {
   width: 100%;

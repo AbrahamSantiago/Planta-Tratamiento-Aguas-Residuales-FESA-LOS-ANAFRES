@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Datos Interesantes - PTAR</title>
+  <title>Anuncios - PTAR</title>
   <link rel="stylesheet" href="Anuncios.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
       <li><a href="#">Contacto</a></li>
       <li><a href="#">Prácticas</a></li>
       <li><a href="Galeria.html">Galería</a></li>
-      <li><a href="Marketing.html">Portal</a></li>
+      <li><a href="Login.html">Portal</a></li>
     </ul>
   </nav>
 
@@ -43,18 +43,18 @@
     <!-- Contenido principal -->
     <main class="principal">
       <section class="formulario">
-        <h2>Agregar Dato Interesante</h2>
-        <form id="datoForm">
-          <input type="text" id="titulo" placeholder="Título del Anuncio" required>
-          <textarea id="contenido" placeholder="Descripción del anuncio..." required></textarea>
+        <h2>Publicar Anuncio</h2>
+        <form id="anuncioForm">
+          <input type="text" id="tituloAnuncio" placeholder="Título del anuncio" required>
+          <textarea id="mensajeAnuncio" placeholder="Mensaje del anuncio..." required></textarea>
           <input type="file" id="imagenAnuncio" accept="image/*">
-          <button type="submit">Agregar</button>
+          <button type="submit">Publicar</button>
         </form>
       </section>
 
       <section class="datos-interesantes">
-        <h2>Datos Publicados</h2>
-        <div id="contenedorDatos" class="contenedor-datos"></div>
+        <h2>Anuncios Publicados</h2>
+        <div id="contenedorAnuncios" class="contenedor-datos"></div>
       </section>
     </main>
   </div>
