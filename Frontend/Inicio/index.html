@@ -56,20 +56,158 @@
 
 
   <!-- CONTENIDO DE EJEMPLO -->
-  <main class="mt-4">
+  <main class="mt-6">
     <div class="container bg-info-section" id="informacion">
-      <div class="row">
-        <div class="text-center col-md-100">
-          <h1 class="letra-grande">PTAR: Panta de Tratamiento de Aguas Residuales</h1>
-          <p class="letra-subtitulo">La Planta de Tratamiento de Aguas Residuales (PTAR) de la FES Acatlán es un sistema diseñado para procesar y reutilizar el agua residual del campus, promoviendo la sustentabilidad y el cuidado del medio ambiente.</p>
-          <!-- resto del texto -->
+      <div class="row justify-content-center">
+        <div class="col-12 text-center mb-4">
+        <h1 class="letra-grande">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+        <p class="letra-subtitulo">
+          La Planta de Tratamiento de Aguas Residuales (PTAR) de la FES Acatlán es un sistema diseñado para procesar y reutilizar el agua residual del campus, promoviendo la sustentabilidad y el cuidado del medio ambiente.
+        </p>
+      </div>
+
+      <!-- Miniatura 1 -->
+      <div class="col-12 col-md-3">
+        <img
+          src="/IMG/PTAR_MOD.jpeg"
+          alt="PTAR Mod"
+          class="thumbnail-img img-fluid"
+          data-bs-toggle="modal"
+          data-bs-target="#imageModal"
+          data-bs-image="/IMG/PTAR_MOD.jpeg"
+        >
+      </div>
+
+      <!-- Miniatura 2 -->
+      <div class="col-12 col-md-3 ">
+        <img
+          src="/IMG/PTAR_FOTO1.jpg"
+          alt="PTAR Vista"
+          class="thumbnail-img img-fluid"
+          data-bs-toggle="modal"
+          data-bs-target="#imageModal"
+          data-bs-image="/IMG/PTAR_FOTO1.jpg"
+        >
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container bg-info-section py-5" id="informacion2">
+    <div class="row">
+      <!-- OBJETIVO -->
+      <div class="col-md-6 text-center mb-4">
+        <h2 class="styled-heading">Objetivo</h2>
+        <button
+          class="btn btn-outline-light btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseObjetivo"
+          aria-expanded="false"
+          aria-controls="collapseObjetivo">
+          Ver más
+        </button>
+        <div class="collapse" id="collapseObjetivo">
+          <p class="text-white">
+            Construir y poner en marcha la operación de la planta de tratamiento
+            de aguas residuales para el riego de las áreas verdes de la FES
+            Acatlán, a fin de minimizar el impacto ecológico, así como coadyuvar
+            con la preservación del vital líquido suministrado por el pozo.
+          </p>
+          <img
+            src="/IMG/DigramaPTAR.png"
+            alt="Diagrama PTAR"
+            class="img-fluid d-block mx-auto mt-3">
         </div>
-        <div>
-          <!--img src="/IMG/PTAR_MOD.jpeg" class="img-fluid mb-3" alt="PTAR"-->
-          <img src="/IMG/PTAR_FOTO1.jpg" class="im" alt="PTAR vista">
+      </div>
+
+      <!-- IMPACTO Y BENEFICIO SOCIAL -->
+      <div class="col-md-6 text-center mb-4">
+        <h2 class="styled-heading">Impacto y Beneficio Social</h2>
+        <button
+          class="btn btn-outline-light btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseImpacto"
+          aria-expanded="false"
+          aria-controls="collapseImpacto">
+          Ver más
+        </button>
+        <div class="collapse" id="collapseImpacto">
+          <ul class="text-white text-start">
+            <li>Tratamiento de aguas residuales generadas por la comunidad.</li>
+            <li>Disminución de descarga a la red municipal para conservación.</li>
+            <li>Riego de áreas verdes con agua tratada, sustituyendo agua potable.</li>
+            <li>Cumplimiento de los objetivos de la Universidad Sustentable.</li>
+            <li>Fortalecimiento del conocimiento ambiental en la comunidad.</li>
+          </ul>
+          <img
+            src="/IMG/FotodeReactor.jpg"
+            alt="Reactor PTAR"
+            class="img-fluid d-block mx-auto mt-3">
         </div>
       </div>
     </div>
+
+    <!-- EJEMPLO DE OTRA SECCIÓN: ASPECTOS ACADÉMICOS -->
+    <div class="row">
+      <div class="col-md-6 text-center mb-4">
+        <h2 class="styled-heading">Aspectos Académicos</h2>
+        <button
+          class="btn btn-outline-light btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseAcademicos"
+          aria-expanded="false"
+          aria-controls="collapseAcademicos">
+          Ver más
+        </button>
+        <div class="collapse" id="collapseAcademicos">
+          <p class="text-white">
+            La PTAR sirve como laboratorio vivo para asignaturas de Ingeniería
+            Ambiental, Biotecnología y Ciencias del Agua, aportando prácticas
+            de campo y proyectos de investigación.
+          </p>
+          <img
+            src="/IMG/PrototipoPracticas.jpg"
+            alt="Aspectos Académicos"
+            class="img-fluid d-block mx-auto mt-3">
+        </div>
+      </div>
+      
+      <div class="col-md-6 text-center mb-4">
+        <h2 class="styled-heading">Ventajas</h2>
+        <button
+          class="btn btn-outline-light btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseAcademicos"
+          aria-expanded="false"
+          aria-controls="collapseAcademicos">
+          Ver más
+        </button>
+        <div class="collapse" id="collapseAcademicos">
+          <ul class="text-white text-start">
+            <li>Baja Inversión.</li>
+            <li>Bajos costos de operación y mantenimiento.</li>
+            <li>Resiste largos tiempos sin alimentación de sustrato.</li>
+            <li>Baja   producción   de    lodos,    ya   estabilizados   y espesados.</li>
+            <li>Remoción  de  materia  orgánica  entre  60  y  80% según el tipo de agua residual.</li>
+          </ul>
+          <img
+            src="/IMG/reactor1_anaerobico.jpg"
+            alt="Aspectos Académicos"
+            class="img-fluid d-block mx-auto mt-3">
+        </div>
+      </div>
+
+      <!-- PUEDES AÑADIR AQUÍ MÁS SECCIONES -->
+    </div>
+   
+
+      <!-- PUEDES AÑADIR AQUÍ MÁS SECCIONES -->
+    
+  </div>
   </main>
 
   <!-- FOOTER -->

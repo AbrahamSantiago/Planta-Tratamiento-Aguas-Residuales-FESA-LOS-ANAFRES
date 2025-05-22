@@ -106,3 +106,58 @@ img, iframe {
 .letra_navar{
   color: aliceblue;
 }
+/* color por defecto: blanco */
+.navbar-nav .nav-link {
+  color: white !important;
+  transition: color 0.3s ease;
+}
+
+/* color al pasar el ratón (mantenlo como ya lo tengas) */
+.navbar-nav .nav-link.hover-color {
+  color: rgb(220, 213, 20) !important; /* o el color que prefieras */
+}
+btn-link {
+  text-decoration: none;
+  font-size: 1.5rem;      /* ajusta tamaño si lo necesitas */
+}
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Asegúrate de que el container no tenga padding excesivo */
+/* Estilo atractivo para los headings */
+.styled-heading {
+  background: linear-gradient(90deg, #0062E6, #33AEFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Asegura que los botones “Ver más” destaquen sobre el fondo */
+#informacion2 .btn-outline-light {
+  border-color: #ffffff80;
+  color: #fff;
+}
+
+#informacion2 .btn-outline-light:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Ajustes de espaciado */
+#informacion2 p,
+#informacion2 ul {
+  margin-bottom: 0;
+}
+
+.thumbnail-img {
+  max-width: 320px;    /* ajusta al ancho que quieras */
+  height: 200px;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  transition: transform 0.2s ease;
+}
+.thumbnail-img:hover {
+  transform: scale(3.05);
+}
