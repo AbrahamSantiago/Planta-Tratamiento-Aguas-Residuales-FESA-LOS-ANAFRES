@@ -1,26 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const db = require('../db');
 const path = require('path');
 const fs = require('fs');
+const db = require('../db');
 
-// Configuración de almacenamiento
+// Configurar almacenamiento con multer
 const storage = multer.diskStorage({
-  destination: 'public/uploads',
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads');
+  },
+  filename: function (req, file, cb) {
+    const uniqueName = Date.now() + '-' + file.originalname;
+    cb(null, uniqueName);
   }
 });
+
 const upload = multer({ storage });
 
-// Subir
+// Subir archivo
 router.post('/', upload.single('archivo'), (req, res) => {
   const { tipo } = req.body;
   const archivo = req.file?.filename;
   const fecha = new Date().toISOString();
 
-  if (!archivo || !tipo) return res.status(400).json({ error: 'Archivo o tipo faltante' });
+  if (!archivo || !tipo) {
+    return res.status(400).json({ error: 'Faltan datos' });
+  }
 
   db.run(`INSERT INTO galeria (tipo, archivo, fecha) VALUES (?, ?, ?)`,
     [tipo, archivo, fecha],
@@ -30,7 +36,7 @@ router.post('/', upload.single('archivo'), (req, res) => {
     });
 });
 
-// Obtener
+// Obtener todos
 router.get('/', (req, res) => {
   db.all(`SELECT * FROM galeria ORDER BY id DESC`, [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -45,7 +51,7 @@ router.delete('/:id', (req, res) => {
 
     const ruta = path.join(__dirname, '../public/uploads', row.archivo);
     fs.unlink(ruta, (err) => {
-      if (err && err.code !== 'ENOENT') return res.status(500).json({ error: 'No se pudo eliminar archivo físico' });
+      if (err && err.code !== 'ENOENT') return res.status(500).json({ error: 'Error al eliminar archivo físico' });
 
       db.run(`DELETE FROM galeria WHERE id = ?`, [req.params.id], (err) => {
         if (err) return res.status(500).json({ error: err.message });
@@ -56,3 +62,4 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
+

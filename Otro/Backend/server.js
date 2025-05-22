@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const galeriaRoutes = require('./routes/galeria');
 
+const galeriaRoutes = require('./routes/galeria');
 const app = express();
 const PORT = 3000;
 
@@ -15,5 +15,5 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 app.use('/api/galeria', galeriaRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Servidor activo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
