@@ -46,9 +46,11 @@
       <section class="formulario">
         <h2>Subir a la galería</h2>
         <form id="galeriaForm">
-          <label>Selecciona archivo:
-            <input type="file" id="archivo" accept="image/*,video/*" required>
-          </label>
+          <select id="tipo">
+            <option value="imagen">Imagen</option>
+            <option value="video">Video</option>
+          </select>
+          <input type="file" id="archivo" accept="image/*,video/*" required>
           <button type="submit">Agregar</button>
         </form>
       </section>

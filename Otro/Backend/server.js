@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-const galeriaRoutes = require('./routes/galeria');
+const galeriaRoutes = require('.Routers/R_Marketing.js.);
 const datosRoutes = require('./routes/datos');
 const anunciosRoutes = require('./routes/anuncios');
 
