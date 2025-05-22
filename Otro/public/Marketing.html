@@ -17,27 +17,26 @@
     </div>
   </div>
 
-   <!-- Menú principal -->
+  <!-- Menú principal -->
   <nav class="menu-navegacion">
     <ul>
       <li><a href="#">Información</a></li>
       <li><a href="#">Servicio Social</a></li>
       <li><a href="#">Contacto</a></li>
       <li><a href="#">Prácticas profesionales</a></li>
-	  <li><a href="Galeria.html">Galeria</a></li>
+      <li><a href="Galeria.html">Galería</a></li>
       <li><a href="Login.html">Portal</a></li>
     </ul>
   </nav>
 
-  <!-- Cuerpo dividido -->
   <div class="contenido">
     <!-- Barra lateral -->
     <aside class="sidebar">
       <h3>Secciones</h3>
       <ul>
-        <li><a href="Marketing.html">🖼️ Galeria</a></li>
+        <li><a href="Marketing.html">🖼️ Galería</a></li>
         <li><a href="Anuncios.html">📝 Anuncios</a></li>
-        <li><a href="DastosInteresantes.html">ℹ️ Datos Interesantes</a></li>
+        <li><a href="DatosInteresantes.html">ℹ️ Datos Interesantes</a></li>
       </ul>
     </aside>
 
@@ -45,12 +44,12 @@
     <main class="principal">
       <section class="formulario">
         <h2>Subir a la galería</h2>
-        <form id="galeriaForm">
-          <select id="tipo">
+        <form id="galeriaForm" enctype="multipart/form-data">
+          <select id="tipo" name="tipo" required>
             <option value="imagen">Imagen</option>
             <option value="video">Video</option>
           </select>
-          <input type="file" id="archivo" accept="image/*,video/*" required>
+          <input type="file" id="archivo" name="archivo" accept="image/*,video/*" required>
           <button type="submit">Agregar</button>
         </form>
       </section>
@@ -67,6 +66,7 @@
     </main>
   </div>
 
-  <script src="Marketing.js"></script>
+  <!-- ✅ Este SÍ debe ir -->
+  <script src="galeria.js"></script>
 </body>
 </html>

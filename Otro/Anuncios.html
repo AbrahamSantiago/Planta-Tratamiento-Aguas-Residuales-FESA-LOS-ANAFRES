@@ -44,10 +44,10 @@
     <main class="principal">
       <section class="formulario">
         <h2>Publicar Anuncio</h2>
-        <form id="anuncioForm">
-          <input type="text" id="tituloAnuncio" placeholder="Título del anuncio" required>
-          <textarea id="mensajeAnuncio" placeholder="Mensaje del anuncio..." required></textarea>
-          <input type="file" id="imagenAnuncio" accept="image/*">
+        <form id="anuncioForm" enctype="multipart/form-data">
+          <input type="text" id="tituloAnuncio" name="titulo" placeholder="Título del anuncio" required>
+          <textarea id="mensajeAnuncio" name="mensaje" placeholder="Mensaje del anuncio..." required></textarea>
+          <input type="file" id="imagenAnuncio" name="imagen" accept="image/*">
           <button type="submit">Publicar</button>
         </form>
       </section>
