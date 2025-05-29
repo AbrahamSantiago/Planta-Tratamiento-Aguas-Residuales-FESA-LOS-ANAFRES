@@ -9,7 +9,19 @@
 </head>
 <body>
 
-  <h1>Gestión de Usuarios - Planta de Tratamiento</h1>
+
+  <header>
+  <div class="header-gradient"></div>
+  <div class="header-container">
+    <div class="logo-container">
+      <img src="/IMG/logo_fesa2.png" alt="UNAM" class="logo logo-unam">
+      <h1 class="header-title text-center">Gestión de Usuarios</h1>
+      <img src="/IMG/logoPTAR-Photoroom.png" alt="PTAR" class="logo logo-ptar">
+    </div>
+  </div>
+</header>
+
+  
   <div class="container">
 
     <!-- Formulario de Alta de Usuario -->
@@ -19,16 +31,24 @@
         <input type="text" id="nombre" required placeholder="Ej. Juan Pérez"/>
       </div>
       <div>
-        <label for="usuario">Usuario</label>
+        <label for="usuario">NombreUsuario</label>
+        <input type="text" id="usuario" required placeholder="Ej. j.perez" />
+      </div>
+      <div>
+        <label for="contraseña">Contraseña Acceso</label>
         <input type="text" id="usuario" required placeholder="Ej. j.perez" />
       </div>
       <div>
         <label for="rol">Rol</label>
         <select id="rol" required>
           <option value="">--Selecciona un rol--</option>
+          <option value="Direccion">Director/a</option>
           <option value="Administrador">Administrador</option>
-          <option value="Operador">Operador</option>
-          <option value="Invitado">Invitado</option>
+          <option value="Docente">Docente</option>
+          <option value="DesarrolladorWeb">Desarrollador Web</option>
+          <option value="DiseñadorGrafico">DiseñadorGrafico</option>
+          <option value="Comunicacion">Comunicación</option>
+
         </select>
       </div>
       <button type="submit">Agregar Usuario</button>
@@ -40,6 +60,7 @@
         <tr>
           <th>Nombre</th>
           <th>Usuario</th>
+          <th>Contraseña</th>
           <th>Rol</th>
           <th>Estado</th>
           <th>Acciones</th>
@@ -55,7 +76,7 @@
   <script>
     // Array local de ejemplo (en la práctica, vendría de una BD o API)
     let usuarios = [
-      { id: 1, nombre: "María López", usuario: "mlopez", rol: "Administrador", estado: "activo" },
+      { id: 1, nombre: "María López", usuario: "mlopez", contraseña:"1234" ,rol: "Administrador", estado: "activo" },
       { id: 2, nombre: "Carlos Méndez", usuario: "cmendez", rol: "Operador", estado: "activo" },
       { id: 3, nombre: "Ana Ruiz", usuario: "aruiz", rol: "Invitado", estado: "inactivo" },
     ];
@@ -72,6 +93,7 @@
       const nombre = document.getElementById('nombre').value;
       const usuario = document.getElementById('usuario').value;
       const rol = document.getElementById('rol').value;
+      const contraseña = document.getElementById('contraseña').value;
 
       // Generar un ID sencillo (único) para el nuevo usuario
       const nuevoID = usuarios.length > 0 ? usuarios[usuarios.length - 1].id + 1 : 1;
@@ -81,6 +103,7 @@
         id: nuevoID,
         nombre,
         usuario,
+        contraseña,
         rol,
         estado: "activo"  // Por defecto, nuevo usuario en "activo"
       };
@@ -107,14 +130,16 @@
         // Celdas
         const celdaNombre = fila.insertCell(0);
         const celdaUsuario = fila.insertCell(1);
-        const celdaRol = fila.insertCell(2);
-        const celdaEstado = fila.insertCell(3);
-        const celdaAcciones = fila.insertCell(4);
+        const celdaContraseña= fila.insrtCell(2)
+        const celdaRol = fila.insertCell(3);
+        const celdaEstado = fila.insertCell(4);
+        const celdaAcciones = fila.insertCell(5);
 
         // Asignar valores
         celdaNombre.textContent = user.nombre;
         celdaUsuario.textContent = user.usuario;
         celdaRol.textContent = user.rol;
+        celdaContraseña.textContent = user.contraseña
         
         // Mostrar estado con estilo
         celdaEstado.textContent = user.estado === "activo" ? "Activo" : "Inactivo";

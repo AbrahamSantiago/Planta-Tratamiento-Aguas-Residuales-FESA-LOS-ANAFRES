@@ -70,6 +70,7 @@ img, iframe {
 @media (max-width: 576px) {
   header h1 {
     font-size: 1.25rem;
+    
   }
 }
 @media (max-width: 700px) {
@@ -79,7 +80,7 @@ img, iframe {
   }
 }
 .fondo-vista {
-  background-image: url('/IMG/FondoPlanta.png');
+  background-image: url('/IMG/Recipientes.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -172,4 +173,51 @@ btn-link {
 }
 .thumbnail-img:hover {
   transform: scale(1.25);
+}
+
+
+
+
+.content-home{
+  border-radius: 12px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0,0, 0.4);
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
+  background: #EFB810;
+
+}
+.content-home img {
+  width: 100%;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.content-home .description a {
+  text-decoration: none;
+  color: #6d7fa0;
+  font-size: 22px;
+  border-radius: 5px;
+}
+.content-home .description a:hover {
+  color: #bb8800;
+}
+
+/*Galeria/*
+/* Zona de drop */
+#drop-zone {
+  border: 2px dashed #6c757d;
+  border-radius: 5px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+#drop-zone.hover {
+  border-color: #0d6efd;
+  background-color: #f8f9fa;
+}
+
+/* Oculta el carrusel hasta que haya imágenes */
+#carousel-container.d-none {
+  display: none !important;
 }

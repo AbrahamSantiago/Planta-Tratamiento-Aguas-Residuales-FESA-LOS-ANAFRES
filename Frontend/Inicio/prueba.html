@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel con Enlaces</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.8rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #f8f8f8;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .toggle-btn.active {
+            background-color: white;
+            color: #1a2a6c;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .view {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* Estilos para el carrusel */
+        .carousel-container {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .carousel-title {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            height: 450px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .carousel-btn:hover {
+            background: #0f1a4a;
+            transform: translateY(-2px);
+        }
+
+        .indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: #1a2a6c;
+            transform: scale(1.2);
+        }
+
+        /* Estilos para el panel de administración */
+        .admin-container {
+            padding: 30px;
+        }
+
+        .admin-title {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .upload-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .upload-title {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .upload-area {
+            border: 2px dashed #1a2a6c;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(26, 42, 108, 0.03);
+        }
+
+        .upload-area:hover {
+            background: rgba(26, 42, 108, 0.08);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .upload-btn {
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: #0f1a4a;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .gallery-section {
+            margin-top: 30px;
+        }
+
+        .gallery-title {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-controls {
+            padding: 15px;
+        }
+
+        .gallery-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .gallery-input:focus {
+            outline: none;
+            border-color: #1a2a6c;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .gallery-btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        .btn-move {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-move:hover {
+            background: #2980b9;
+        }
+
+        .btn-save {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #27ae60;
+        }
+
+        .instructions {
+            background: #e3f2fd;
+            border-left: 4px solid #1a2a6c;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .instructions h3 {
+            color: #1a2a6c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-style: italic;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            background: #2ecc71;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.error {
+            background: #e74c3c;
+        }
+
+        /* Estilos para la vista de detalles */
+        .detail-container {
+            padding: 30px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .detail-title {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        
+        .detail-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-description {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .detail-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #1a2a6c;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .detail-link:hover {
+            background: #0f1a4a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .detail-link i {
+            margin-left: 8px;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+            background: #f8f8f8;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .carousel {
+                height: 350px;
+            }
+            
+            .detail-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .carousel {
+                height: 250px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .detail-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> Imagen agregada correctamente al carrusel!
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-images"></i> Carrusel con Enlaces</h1>
+            <p class="subtitle">Explora nuestro carrusel de imágenes interactivo. Haz clic en cualquier imagen para ver más detalles o visitar enlaces externos.</p>
+        </header>
+
+        <div class="view-toggle">
+            <button class="toggle-btn active" data-view="carousel-view">
+                <i class="fas fa-desktop"></i> Vista Carrusel
+            </button>
+            <button class="toggle-btn" data-view="admin-view">
+                <i class="fas fa-cog"></i> Panel de Administración
+            </button>
+            <button class="toggle-btn" data-view="detail-view" style="display: none;">
+                <i class="fas fa-info-circle"></i> Detalles
+            </button>
+        </div>
+
+        <!-- Vista del Carrusel -->
+        <section id="carousel-view" class="view active">
+            <div class="carousel-container">
+                <h2 class="carousel-title">Galería de Destinos</h2>
+                <div class="carousel">
+                    <div class="carousel-inner" id="carousel-inner">
+                        <!-- Las imágenes del carrusel se cargarán aquí con JavaScript -->
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                    <button class="carousel-btn" id="next-btn">
+                        Siguiente <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="indicators" id="indicators">
+                    <!-- Los indicadores se generarán con JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel de Administración -->
+        <section id="admin-view" class="view">
+            <div class="admin-container">
+                <h2 class="admin-title"><i class="fas fa-tools"></i> Panel de Administración</h2>
+                
+                <div class="upload-section">
+                    <h3 class="upload-title"><i class="fas fa-cloud-upload-alt"></i> Subir Nueva Imagen</h3>
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <p class="upload-text">Arrastra y suelta imágenes aquí o haz clic para seleccionar</p>
+                        <button class="upload-btn">Seleccionar Imágenes</button>
+                        <input type="file" id="file-input" accept="image/*" multiple>
+                    </div>
+                </div>
+                
+                <div class="gallery-section">
+                    <h3 class="gallery-title"><i class="fas fa-th-list"></i> Administrar Imágenes</h3>
+                    <div class="gallery-container" id="gallery-container">
+                        <!-- Las imágenes para administrar se cargarán aquí con JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="instructions">
+                    <h3><i class="fas fa-info-circle"></i> Instrucciones de Uso</h3>
+                    <ul>
+                        <li><strong>Subir imágenes:</strong> Haz clic en el área de carga o arrastra imágenes para añadirlas al carrusel.</li>
+                        <li><strong>Enlaces:</strong> Asigna una URL a cada imagen para que al hacer clic en el carrusel se abra el enlace.</li>
+                        <li><strong>Reordenar:</strong> Utiliza los botones de flecha para mover las imágenes hacia arriba o abajo.</li>
+                        <li><strong>Eliminar:</strong> Usa el botón rojo para quitar imágenes del carrusel.</li>
+                        <li><strong>Guardar cambios:</strong> No olvides hacer clic en el botón verde para guardar los enlaces.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Vista de Detalles -->
+        <section id="detail-view" class="view">
+            <button class="back-btn" id="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="detail-container">
+                <h2 class="detail-title" id="detail-title">Título del Destino</h2>
+                <img src="" alt="" class="detail-image" id="detail-image">
+                <p class="detail-description" id="detail-description">Descripción detallada del destino seleccionado...</p>
+                <a href="#" class="detail-link" id="detail-link" target="_blank">Visitar Sitio Oficial <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Sistema de Carrusel con Enlaces &copy; 2023 | Desarrollado con HTML, CSS y JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        // Datos iniciales de ejemplo con enlaces
+        let carouselData = [
+            {
+                id: 1,
+                url: "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                link: "https://es.wikipedia.org/wiki/Monta%C3%B1a",
+                title: "Montañas Verdes",
+                description: "Las montañas verdes ofrecen paisajes impresionantes con su exuberante vegetación y vistas panorámicas. Ideal para senderismo, camping y fotografía de naturaleza. La región cuenta con rutas para todos los niveles de experiencia."
+            },
+            {
+                id: 2,
+                url: "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                link: "https://es.wikipedia.org/wiki/Lago",
+                title: "Atardecer en el Lago",
+                description: "Disfruta de atardeceres inolvidables en este lago cristalino. Perfecto para actividades acuáticas como kayak, natación y pesca. El lago también ofrece áreas de picnic y observación de aves para toda la familia."
+            },
+            {
+                id: 3,
+                url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                link: "https://es.wikipedia.org/wiki/Bosque",
+                title: "Bosque Montañoso",
+                description: "Explora este bosque montañoso lleno de vida silvestre y senderos naturales. Con más de 50 km de rutas marcadas, es un paraíso para excursionistas y amantes de la naturaleza. La diversidad de flora y fauna es impresionante."
+            }
+        ];
+
+        // Elementos del DOM
+        const carouselInner = document.getElementById('carousel-inner');
+        const indicatorsContainer = document.getElementById('indicators');
+        const galleryContainer = document.getElementById('gallery-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const views = document.querySelectorAll('.view');
+        const notification = document.getElementById('notification');
+        const backBtn = document.getElementById('back-btn');
+        const detailTitle = document.getElementById('detail-title');
+        const detailImage = document.getElementById('detail-image');
+        const detailDescription = document.getElementById('detail-description');
+        const detailLink = document.getElementById('detail-link');
+        const detailToggleBtn = document.querySelector('[data-view="detail-view"]');
+
+        // Variables para el carrusel
+        let currentIndex = 0;
+        let interval;
+
+        // Función para mostrar notificación
+        function showNotification(message, isError = false) {
+            notification.innerHTML = `<i class="fas fa-${isError ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
+            notification.className = `notification ${isError ? 'error' : ''} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Cambiar entre vistas
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const viewId = button.dataset.view;
+                
+                // Actualizar botones activos
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Mostrar vista correspondiente
+                views.forEach(view => {
+                    view.classList.remove('active');
+                    if (view.id === viewId) {
+                        view.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Inicializar el carrusel
+        function initCarousel() {
+            carouselInner.innerHTML = '';
+            indicatorsContainer.innerHTML = '';
+            
+            carouselData.forEach((item, index) => {
+                // Crear elemento del carrusel
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item';
+                if (index === 0) carouselItem.classList.add('active');
+                
+                carouselItem.innerHTML = `
+                    <img src="${item.url}" alt="${item.title}" class="carousel-img">
+                    <div class="carousel-caption">
+                        <h3>${item.title}</h3>
+                        <p>${item.link ? 'Haz clic para ver detalles' : 'Sin enlace asociado'}</p>
+                    </div>
+                `;
+                
+                // Agregar evento de clic para mostrar detalles
+                carouselItem.addEventListener('click', () => {
+                    if (item.link) {
+                        // Mostrar vista de detalles
+                        showDetailView(item);
+                    } else {
+                        showNotification('Esta imagen no tiene enlace asociado', true);
+                    }
+                });
+                
+                carouselInner.appendChild(carouselItem);
+                
+                // Crear indicadores
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.dataset.index = index;
+                
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+                
+                indicatorsContainer.appendChild(indicator);
+            });
+            
+            // Iniciar rotación automática
+            startCarousel();
+        }
+
+        // Mostrar vista de detalles
+        function showDetailView(item) {
+            // Actualizar contenido de la vista de detalles
+            detailTitle.textContent = item.title;
+            detailImage.src = item.url;
+            detailImage.alt = item.title;
+            detailDescription.textContent = item.description;
+            detailLink.href = item.link;
+            
+            // Ocultar el botón de vista de detalles en el toggle
+            detailToggleBtn.style.display = 'flex';
+            
+            // Cambiar a la vista de detalles
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            detailToggleBtn.classList.add('active');
+            
+            views.forEach(view => {
+                view.classList.remove('active');
+                if (view.id === 'detail-view') {
+                    view.classList.add('active');
+                }
+            });
+        }
+
+        // Botón para regresar
+        backBtn.addEventListener('click', () => {
+            // Regresar a la vista del carrusel
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-view="carousel-view"]').classList.add('active');
+            
+            views.forEach(view => {
+                view.classList.remove('active');
+                if (view.id === 'carousel-view') {
+                    view.classList.add('active');
+                }
+            });
+        });
+
+        // Actualizar carrusel
+        function updateCarousel() {
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            // Ocultar todos los items
+            items.forEach(item => item.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Mostrar item actual
+            items[currentIndex].classList.add('active');
+            indicators[currentIndex].classList.add('active');
+            
+            // Actualizar posición
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Iniciar rotación automática
+        function startCarousel() {
+            clearInterval(interval);
+            interval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % carouselData.length;
+                updateCarousel();
+            }, 5000);
+        }
+
+        // Eventos de navegación
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
+            updateCarousel();
+            startCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % carouselData.length;
+            updateCarousel();
+            startCarousel();
+        });
+
+        // Inicializar galería de administración
+        function initGallery() {
+            galleryContainer.innerHTML = '';
+            
+            if (carouselData.length === 0) {
+                galleryContainer.innerHTML = `
+                    <div class="empty-message">
+                        <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <p>No hay imágenes en el carrusel</p>
+                        <p>Sube algunas imágenes para comenzar</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            carouselData.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.dataset.id = item.id;
+                
+                galleryItem.innerHTML = `
+                    <img src="${item.url}" alt="${item.title}" class="gallery-img">
+                    <div class="gallery-controls">
+                        <input type="text" class="gallery-input" value="${item.link || ''}" 
+                            placeholder="URL al hacer clic" data-id="${item.id}">
+                        <textarea class="gallery-input" placeholder="Descripción" data-id="${item.id}-desc">${item.description || ''}</textarea>
+                        <div class="btn-group">
+                            <button class="gallery-btn btn-move move-up" data-id="${item.id}" ${index === 0 ? 'disabled' : ''}>
+                                <i class="fas fa-arrow-up"></i>
+                            </button>
+                            <button class="gallery-btn btn-move move-down" data-id="${item.id}" ${index === carouselData.length - 1 ? 'disabled' : ''}>
+                                <i class="fas fa-arrow-down"></i>
+                            </button>
+                            <button class="gallery-btn btn-delete" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="gallery-btn btn-save" data-id="${item.id}">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                galleryContainer.appendChild(galleryItem);
+            });
+        }
+
+        // Subir nuevas imágenes
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Arrastrar y soltar
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = 'rgba(26, 42, 108, 0.1)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.backgroundColor = 'rgba(26, 42, 108, 0.03)';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = 'rgba(26, 42, 108, 0.03)';
+            
+            if (e.dataTransfer.files.length > 0) {
+                handleFiles(e.dataTransfer.files);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFiles(e.target.files);
+            }
+        });
+
+        // Manejar archivos subidos
+        function handleFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                
+                // Verificar que sea una imagen
+                if (!file.type.match('image.*')) continue;
+                
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    // Crear nuevo elemento para el carrusel
+                    const newItem = {
+                        id: Date.now() + i,
+                        url: e.target.result,
+                        link: "",
+                        title: `Imagen ${carouselData.length + 1}`,
+                        description: "Agrega una descripción para esta imagen"
+                    };
+                    
+                    carouselData.push(newItem);
+                    
+                    // Actualizar ambas vistas
+                    initCarousel();
+                    initGallery();
+                    
+                    // Mostrar notificación
+                    showNotification(`Imagen "${file.name}" agregada con éxito!`);
+                };
+                
+                reader.readAsDataURL(file);
+            }
+            
+            // Limpiar input
+            fileInput.value = '';
+        }
+
+        // Eventos para la galería
+        galleryContainer.addEventListener('click', (e) => {
+            const target = e.target;
+            const button = target.closest('.gallery-btn');
+            
+            if (!button) return;
+            
+            const id = parseInt(button.dataset.id);
+            const index = carouselData.findIndex(item => item.id === id);
+            
+            if (index === -1) return;
+            
+            if (button.classList.contains('btn-delete')) {
+                // Eliminar imagen
+                const imageTitle = carouselData[index].title;
+                carouselData.splice(index, 1);
+                initGallery();
+                initCarousel();
+                showNotification(`Imagen "${imageTitle}" eliminada`);
+            } 
+            else if (button.classList.contains('move-up') && index > 0) {
+                // Mover hacia arriba
+                [carouselData[index], carouselData[index - 1]] = [carouselData[index - 1], carouselData[index]];
+                initGallery();
+                initCarousel();
+                showNotification(`Imagen movida hacia arriba`);
+            } 
+            else if (button.classList.contains('move-down') && index < carouselData.length - 1) {
+                // Mover hacia abajo
+                [carouselData[index], carouselData[index + 1]] = [carouselData[index + 1], carouselData[index]];
+                initGallery();
+                initCarousel();
+                showNotification(`Imagen movida hacia abajo`);
+            } 
+            else if (button.classList.contains('btn-save')) {
+                // Guardar enlace y descripción
+                const linkInput = document.querySelector(`.gallery-input[data-id="${id}"]`);
+                const descInput = document.querySelector(`.gallery-input[data-id="${id}-desc"]`);
+                
+                carouselData[index].link = linkInput.value;
+                carouselData[index].description = descInput.value;
+                
+                // Mostrar feedback
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.style.backgroundColor = '#27ae60';
+                
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-save"></i>';
+                    button.style.backgroundColor = '#2ecc71';
+                }, 1500);
+                
+                showNotification(`Cambios guardados para "${carouselData[index].title}"`);
+            }
+        });
+
+        // Inicializar la aplicación
+        initCarousel();
+        initGallery();
+    </script>
+</body>
+</html>

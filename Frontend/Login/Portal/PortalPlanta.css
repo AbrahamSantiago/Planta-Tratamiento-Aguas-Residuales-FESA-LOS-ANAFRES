@@ -1,31 +1,13 @@
-/* -------------------
-   Estilos Generales
--------------------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-  }
-  
-  body {
-    display: flex;           /* Para ubicar sidebar y contenido en la misma fila */
-    min-height: 100vh;
-    background: #f0f0f0;
-  }
-  /*--------------------
-      Encabezado
-  -------------------- */
- /* GRADIENTE HEADER */
 header {
   position: relative;
+  
 }
 
 /* gradient de fondo */
 .bg-gradient-ptar {
-  background: linear-gradient(to right, #030a29, #442e7e, #6967a8, #ffffff,#ffffff);
-  height: 80px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+  background: linear-gradient(to right, #432a9d, #100734);
+  height: 60px;
+  box-shadow: 0 5px 10px rgba(55, 33, 145, 0.4);
   z-index: 1;               /* por debajo del contenido */
   position: absolute;
   top: 0; left: 0;
@@ -34,74 +16,28 @@ header {
 /* contenedor de contenido encima */
 .header-content {
   position: relative;
-  z-index: 2;               /* por encima del gradiente */
+  z-index: 2;   
+  font-family: 'Asap', sans-serif;
+  font-weight: 700;            /* por encima del gradiente */
+  
 }
 
 /* logos con tamaño fijo y ancho automático */
 .logo-unam,
 .logo-ptar {
-  max-height: 60px;
+  max-height: 50px;
   width: auto;
   display: block;
 }
 
-/* si Bootstrap les aplica img-fluid, puedes anular su ancho así */
-.logo-unam.img-fluid,
-.logo-ptar.img-fluid {
-  max-width: none;
-}
-
-/* Espaciado de links nav */
-.navbar-nav .nav-item {
-  margin: 0 0.5rem;
-}
-
-/* Para imagenes/iframes fluidos */
-img, iframe {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Tipografías de sección */
-.letra-grande {
-  font-size: 2rem;    /* escala en móvil */
-}
-.letra-subtitulo {
-  font-size: 1.5rem;
-}
-
-/* Media queries extra si necesitas: */
-@media (max-width: 576px) {
-  header h1 {
-    font-size: 1.25rem;
-  }
-}
-@media (max-width: 992px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    background-color: rgba(48, 50, 54, 0.7);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-}
-.fondo-vista {
-  background-image: url('/IMG/PTAR_MOD.jpeg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  /* si necesitas algo de opacidad o color de “overlay”: */
-  position: relative;
-}
-.fondo-vista::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.3); /* capa semitransparente */
-  z-index: 1;
-}
-.fondo-vista > * {
-  position: relative;
-  z-index: 2;  /* asegura que tu contenido quede encima del overlay */
-}
-
   
+  h1 {
+    color: #333;
+    text-align: center;
+  }
+  
+  canvas {
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+  }

@@ -1,16 +1,17 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Asap', sans-serif;
     margin: 0;
     padding: 0;
+    
   }
-  body {
+  /* body {
     background: #f2f2f2;
     padding: 2rem;
-  }
+  } */  
   h1 {
-    text-align: center;
-    margin-bottom: 1rem;
+    text-align: auto;
+    
   }
   /* Contenedor principal */
   .container {
@@ -98,3 +99,204 @@
     color: #b22222;
     font-weight: bold;
   }
+
+
+ /* Header Styles */
+header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.header-gradient {
+  background: linear-gradient(to right, #0d042c, #100734);
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 12px rgba(55, 33, 145, 0.3);
+}
+
+.header-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  
+  padding: 10px 0;
+  height: 80px;
+}
+
+.header-title {
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: 'Asap',sans-serif;
+  flex-grow: 1;
+  margin: 0 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  height: 60px;
+  
+  
+  object-fit: contain;
+}
+
+.logo-unam {
+  order: 0;
+}
+
+.logo-ptar {
+  order: 3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.2rem;
+    margin: 0 10px;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 1rem;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+}
+
+
+/*///////////////////////*/
+
+
+
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f2f2f2;
+  padding: 0;
+}
+
+/* Header Styles */
+header {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.header-gradient {
+  background: linear-gradient(to right, #0d042c, #100734);
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 12px rgba(55, 33, 145, 0.3);
+}
+
+.header-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-content h1 {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+}
+
+.logo-left {
+  order: 1;
+}
+
+.logo-right {
+  order: 3;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-top: 20px;
+}
+
+/* ... (el resto de tus estilos CSS existentes permanecen igual) ... */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content h1 {
+    font-size: 1.2rem;
+    margin: 0 10px;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-content {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .header-content h1 {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    order: 1;
+  }
+  
+  .logo {
+    height: 35px;
+    margin: 5px 0;
+  }
+  
+  .logo-left {
+    order: 2;
+  }
+  
+  .logo-right {
+    order: 3;
+  }
+}
