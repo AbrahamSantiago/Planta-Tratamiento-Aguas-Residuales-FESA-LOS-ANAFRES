@@ -65,27 +65,25 @@
         <div class="col-12 text-center mb-4">
         
           <h1 class="letra-grande">Planta de Tratamiento de Aguas Residuales</h1>
-             <section id="carousel-view" class="view active">
-            <div class="carousel-container">
-                
-                <div class="carousel">
-                    <div class="carousel-inner" id="carousel-inner">
-                        <!-- Las imágenes del carrusel se cargarán aquí con JavaScript -->
-                    </div>
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-btn" id="prev-btn">
-                        <i class="fas fa-chevron-left"></i> Anterior
-                    </button>
-                    <button class="carousel-btn" id="next-btn">
-                        Siguiente <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                <div class="indicators" id="indicators">
-                    <!-- Los indicadores se generarán con JavaScript -->
-                </div>
-            </div>
-        </section>
+
+             <section id="carousel-view">
+  <div class="carousel-container">
+    <h2 class="carousel-title">Galería de Destinos</h2>
+    <div class="carousel">
+      <div class="carousel-inner" id="carousel-inner">
+        <!-- JS inyecta .carousel-item aquí -->
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev-btn">Anterior</button>
+      <button class="carousel-btn" id="next-btn">Siguiente</button>
+    </div>
+    <div class="indicators" id="indicators"></div>
+    <a href="/Frontend/Galeria/Galeria.html" class="admin-link">Ir al Panel</a>
+  </div>
+</section>
+
+        
           <p class="letra-subtitulo">
             La Planta de Tratamiento de Aguas Residuales (PTAR) de la FES Acatlán es un sistema diseñado para procesar y reutilizar el agua residual del campus, promoviendo la sustentabilidad y el cuidado del medio ambiente.
           </p>
@@ -249,7 +247,7 @@
         header.classList.toggle("fixed-top", window.scrollY > 0);
       });
     </script>
-<script src="/Frontend/Galeria/Galeria.js"></script>
+<script src="/Frontend/Inicio/index.js"></script>
 </body>
 </html>
 </main>

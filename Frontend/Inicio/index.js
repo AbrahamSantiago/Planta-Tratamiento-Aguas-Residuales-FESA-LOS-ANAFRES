@@ -20,57 +20,44 @@ document.addEventListener('DOMContentLoaded', () => {
     modalImg.alt = alt;
   });
 });
+//////////////// CARRUSEL
+// Datos iniciales de ejemplo con enlaces
 
 
-const carouselInner = document.getElementById('carousel-inner');
+// Obtener datos del carrusel desde localStorage
+        let carouselData = JSON.parse(localStorage.getItem('carouselData')) || [
+            {
+                id: 1,
+                url: "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                link: "https://es.wikipedia.org/wiki/Monta%C3%B1a",
+                title: "Montañas Verdes",
+                description: "Las montañas verdes ofrecen paisajes impresionantes con su exuberante vegetación y vistas panorámicas. Ideal para senderismo, camping y fotografía de naturaleza. La región cuenta con rutas para todos los niveles de experiencia."
+            },
+            {
+                id: 2,
+                url: "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                link: "https://es.wikipedia.org/wiki/Lago",
+                title: "Atardecer en el Lago",
+                description: "Disfruta de atardeceres inolvidables en este lago cristalino. Perfecto para actividades acuáticas como kayak, natación y pesca. El lago también ofrece áreas de picnic y observación de aves para toda la familia."
+            },
+            {
+                id: 3,
+                url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                link: "https://es.wikipedia.org/wiki/Bosque",
+                title: "Bosque Montañoso",
+                description: "Explora este bosque montañoso lleno de vida silvestre y senderos naturales. Con más de 50 km de rutas marcadas, es un paraíso para excursionistas y amantes de la naturaleza. La diversidad de flora y fauna es impresionante."
+            }
+        ];
+
+        // Elementos del DOM
+        const carouselInner = document.getElementById('carousel-inner');
         const indicatorsContainer = document.getElementById('indicators');
-        const galleryContainer = document.getElementById('gallery-container');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
-        const uploadArea = document.getElementById('upload-area');
-        const fileInput = document.getElementById('file-input');
-        const toggleButtons = document.querySelectorAll('.toggle-btn');
-        const views = document.querySelectorAll('.view');
-        const notification = document.getElementById('notification');
-        const backBtn = document.getElementById('back-btn');
-        const detailTitle = document.getElementById('detail-title');
-        const detailImage = document.getElementById('detail-image');
-        const detailDescription = document.getElementById('detail-description');
-        const detailLink = document.getElementById('detail-link');
-        const detailToggleBtn = document.querySelector('[data-view="detail-view"]');
 
         // Variables para el carrusel
         let currentIndex = 0;
         let interval;
-
-        // Función para mostrar notificación
-        function showNotification(message, isError = false) {
-            notification.innerHTML = `<i class="fas fa-${isError ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
-            notification.className = `notification ${isError ? 'error' : ''} show`;
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Cambiar entre vistas
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const viewId = button.dataset.view;
-                
-                // Actualizar botones activos
-                toggleButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // Mostrar vista correspondiente
-                views.forEach(view => {
-                    view.classList.remove('active');
-                    if (view.id === viewId) {
-                        view.classList.add('active');
-                    }
-                });
-            });
-        });
 
         // Inicializar el carrusel
         function initCarousel() {
@@ -91,13 +78,10 @@ const carouselInner = document.getElementById('carousel-inner');
                     </div>
                 `;
                 
-                // Agregar evento de clic para mostrar detalles
+                // Agregar evento de clic para abrir enlace
                 carouselItem.addEventListener('click', () => {
                     if (item.link) {
-                        // Mostrar vista de detalles
-                        showDetailView(item);
-                    } else {
-                        showNotification('Esta imagen no tiene enlace asociado', true);
+                        window.open(item.link, '_blank');
                     }
                 });
                 
@@ -120,44 +104,6 @@ const carouselInner = document.getElementById('carousel-inner');
             // Iniciar rotación automática
             startCarousel();
         }
-
-        // Mostrar vista de detalles
-        function showDetailView(item) {
-            // Actualizar contenido de la vista de detalles
-            detailTitle.textContent = item.title;
-            detailImage.src = item.url;
-            detailImage.alt = item.title;
-            detailDescription.textContent = item.description;
-            detailLink.href = item.link;
-            
-            // Ocultar el botón de vista de detalles en el toggle
-            detailToggleBtn.style.display = 'flex';
-            
-            // Cambiar a la vista de detalles
-            toggleButtons.forEach(btn => btn.classList.remove('active'));
-            detailToggleBtn.classList.add('active');
-            
-            views.forEach(view => {
-                view.classList.remove('active');
-                if (view.id === 'detail-view') {
-                    view.classList.add('active');
-                }
-            });
-        }
-
-        // Botón para regresar
-        backBtn.addEventListener('click', () => {
-            // Regresar a la vista del carrusel
-            toggleButtons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-view="carousel-view"]').classList.add('active');
-            
-            views.forEach(view => {
-                view.classList.remove('active');
-                if (view.id === 'carousel-view') {
-                    view.classList.add('active');
-                }
-            });
-        });
 
         // Actualizar carrusel
         function updateCarousel() {
@@ -198,3 +144,6 @@ const carouselInner = document.getElementById('carousel-inner');
             startCarousel();
         });
 
+        // Inicializar el carrusel al cargar la página
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    
